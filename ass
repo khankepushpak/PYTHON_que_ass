@@ -1,0 +1,318 @@
+# Assignment Questions_List 
+
+input_string = input("Enter comma-separated numbers: ")
+numbers_list = input_string.split(",")
+numbers_tuple = tuple(numbers_list)
+print("List : ", numbers_list)
+print("Tuple : ", numbers_tuple)
+
+
+numbers_tuple
+
+color_list = ["Red", "Green", "White", "Black"]
+first_color = color_list[0]
+last_color = color_list[-1]
+print("First color:", first_color)
+print("Last color:", last_color)
+
+
+sample_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+even_numbers = [x for x in sample_list if x % 2 == 0]
+print("Even numbers:", even_numbers)
+
+
+#Module
+
+import datetime
+
+date1 = datetime.date(2014, 7, 2)
+date2 = datetime.date(2014, 7, 11)
+
+delta = date2 - date1
+print(delta.days, "days")
+
+
+
+#Functions 
+
+import math
+
+radius = 6
+volume = (4/3) * math.pi * (radius ** 3)
+print("Volume of sphere with radius 6:", volume)
+
+
+def sum_or_triple(num1, num2, num3):
+    if num1 == num2 == num3:
+        return 3 * (num1 + num2 + num3)
+    else:
+        return num1 + num2 + num3
+
+# example usage
+print(sum_or_triple(2, 2, 2))  # should output 18 (3 * (2 + 2 + 2))
+print(sum_or_triple(1, 2, 3))  # should output 6 (1 + 2 + 3)
+
+
+def count_fours(lst):
+    count = 0
+    for num in lst:
+        if num == 4:
+            count += 1
+    return count
+
+# example usage
+my_list = [1, 4, 6, 8, 4, 9, 4]
+print(count_fours(my_list))  # should output 3
+
+
+def print_even_until_237(lst):
+    for num in lst:
+        if num == 237:
+            break  # stop printing when we reach 237
+        elif num % 2 == 0:
+            print(num)
+
+# example usage
+my_list = [399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217, 815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717, 958, 743, 527]
+print_even_until_237(my_list)
+
+
+def find_numbers():
+    # loop through numbers from 1500 to 2700 (both included)
+    for num in range(1500, 2701):
+        if num % 7 == 0 and num % 5 == 0:
+            print(num)
+
+# call the function to find the numbers
+find_numbers()
+
+
+for i in range(7):
+    if i == 3 or i == 6:
+        continue
+    print(i, end=' ')
+
+a, b = 0, 1
+
+while b < 50:
+    print(b, end=' ')
+    a, b = b, a+b
+
+
+a, b = 0, 1
+while b < 50:
+    print(b, end=' ')
+    a, b = b, a + b
+
+
+def unique_list(lst):
+    """
+    Returns a new list with unique elements from the input list.
+
+    Args:
+    lst (list): The input list.
+
+    Returns:
+    list: A new list with unique elements from the input list.
+    """
+    return list(set(lst))
+sample_list = [1, 2, 3, 3, 3, 3, 4, 5]
+unique_list = unique_list(sample_list)
+print(unique_list)
+
+
+#Strings 
+
+def concatenate_list(lst):
+    """
+    Concatenates all elements in a list into a string and returns it.
+
+    Args:
+    lst (list): The input list.
+
+    Returns:
+    str: A string containing all elements from the input list.
+    """
+    return ''.join(str(e) for e in lst)
+
+
+sample_list = [1, 2, 'hello', True, 3.14]
+concatenated_string = concatenate_list(sample_list)
+print(concatenated_string)
+
+
+
+#Dictionary 
+
+dic1 = {1: 10, 2: 20}
+dic2 = {3: 30, 4: 40}
+dic3 = {5: 50, 6: 60}
+dic1|dic2|dic3
+
+#Series 
+
+import pandas as pd
+
+s1 = pd.Series([2, 4, 6, 8, 10])
+s2 = pd.Series([1, 3, 5, 7, 9])
+
+# Addition
+s_add = s1 + s2
+print("Addition of two Series:\n", s_add)
+
+# Subtraction
+s_sub = s1 - s2
+print("\nSubtraction of two Series:\n", s_sub)
+
+# Multiplication
+s_mult = s1 * s2
+print("\nMultiplication of two Series:\n", s_mult)
+
+# Division
+s_div = s1 / s2
+print("\nDivision of two Series:\n", s_div)
+
+
+#Data Frame
+
+import pandas as pd
+import numpy as np
+
+# Create the data frame
+exam_data = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+             'score': [12.5, 9, 16.5, np.nan, 9, 20, 14.5, np.nan, 8, 19],
+             'attempts': [1, 3, 2, 3, 2, 3, 1, 1, 2, 1],
+             'qualify': ['yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes']}
+labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+df = pd.DataFrame(exam_data, index=labels)
+
+# Select specific columns and rows
+df_selected = df.loc[['b', 'd', 'f', 'g'], ['name', 'score']]
+
+# Print the selected data frame
+print(df_selected)
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+# load dataset
+tips = pd.read_csv('crime_data.csv')
+
+# aggregations
+print(tips.mean())  # mean of all numeric columns
+print(tips.value_counts())  # value counts for all columns
+
+# histogram
+sns.histplot(data=tips, x="total_bill")
+plt.show()
+
+# boxplot
+sns.boxplot(data=tips, x="day", y="total_bill")
+plt.show()
+
+# scatterplot
+sns.scatterplot(data=tips, x="total_bill", y="tip")
+plt.show()
+
+# barplot
+sns.barplot(data=tips, x="day", y="total_bill")
+plt.show()
+
+# piechart
+plt.pie(tips["day"].value_counts(), labels=tips["day"].unique())
+plt.show()
+
+# dot chart
+sns.stripplot(data=tips, x="day", y="total_bill")
+plt.show()
+
+
+#Basic Programs 
+
+# Program to perform arithmetic operations
+a = 10
+b = 5
+print("Addition: ", a + b)     # Output: 15
+print("Subtraction: ", a - b)  # Output: 5
+print("Multiplication: ", a * b)  # Output: 50
+print("Division: ", a / b)     # Output: 2.0
+print("Modulus: ", a % b)      # Output: 0
+print("Exponentiation: ", a ** b)  # Output: 100000
+print("Floor Division: ", a // b)  # Output: 2
+
+
+# create a list of numbers
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# slice the list to get the first five elements
+first_five = numbers[:5]
+print(first_five)
+
+# slice the list to get the last five elements
+last_five = numbers[-5:]
+print(last_five)
+
+# slice the list to get every other element
+every_other = numbers[::2]
+print(every_other)
+
+# slice the list to get the elements in reverse order
+reverse = numbers[::-1]
+print(reverse)
+
+
+
+
+total = 0
+while total < 100:
+    num = int(input("Enter a number: "))
+    total += num
+print("Sum of numbers is", total)
+
+
+import openpyxl
+
+# Reading an Excel file
+workbook = openpyxl.load_workbook('example.xlsx')
+sheet = workbook.active
+print(sheet['A1'].value)
+
+# Writing to an Excel file
+sheet['B1'] = 'Hello, world!'
+workbook.save('example.xlsx')
+
+
+
+import numpy as np
+
+# create a 1D array of values ranging from 2 to 10
+arr = np.arange(2, 11)
+
+# reshape the array into a 3x3 matrix
+matrix = arr.reshape(3, 3)
+
+print(matrix)
+
+
+import numpy as np
+
+list_of_values = [1, 2, 3, 4, 5]
+numpy_array = np.array(list_of_values)
+
+print("List of values:", list_of_values)
+print("NumPy array:", numpy_array)
+
+
+import numpy as np
+
+# Create a null vector of size 10
+null_vector = np.zeros(10)
+
+# Update the sixth value to 11
+null_vector[5] = 11
+
+# Print the null vector
+print(null_vector)
+
+
